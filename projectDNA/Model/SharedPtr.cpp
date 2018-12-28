@@ -5,14 +5,14 @@
 #include "SharedPtr.h"
 
 template <typename T>
-SharedPtr< T> :: SharedPtr(T* ptr)
+SharedPtr<T> :: SharedPtr(T* ptr)
 {
     m_ptr = ptr;
     counter = new size_t(1);
 }
 
 template <typename T>
-SharedPtr< T> :: ~SharedPtr()
+SharedPtr<T> :: ~SharedPtr()
 {
     if (*counter > 1)
         --(*counter);
@@ -30,25 +30,25 @@ T* SharedPtr< T> ::operator->() const
 }
 
 template <typename T>
-T& SharedPtr< T> ::operator*()  const
+T& SharedPtr<T> ::operator*()  const
 {
     return *m_ptr;
 }
 
 template <typename T>
-T* SharedPtr< T> ::get() const
+T* SharedPtr<T> ::get() const
 {
     return m_ptr;
 }
 
 template <typename T>
-SharedPtr< T> ::operator bool() const
+SharedPtr<T> ::operator bool() const ///?
 {
     return m_ptr;
 }
 
 template <typename T>
-SharedPtr< T> ::SharedPtr(SharedPtr const& other)
+SharedPtr<T> ::SharedPtr(SharedPtr const& other)
 {
     this->m_ptr = other.m_ptr;
     ++counter;
@@ -56,7 +56,7 @@ SharedPtr< T> ::SharedPtr(SharedPtr const& other)
 }
 
 template <typename T>
-SharedPtr< T> & SharedPtr<T> :: operator = (SharedPtr< T > const& other)
+SharedPtr<T> & SharedPtr<T> :: operator = (SharedPtr< T > const& other)
 {
     if(other.m_ptr != NULL)
         delete other.m_ptr;
@@ -67,13 +67,13 @@ SharedPtr< T> & SharedPtr<T> :: operator = (SharedPtr< T > const& other)
 }
 
 template <typename T>
-bool SharedPtr< T> ::operator!=(const SharedPtr& other) const
+bool SharedPtr<T> ::operator!=(const SharedPtr& other) const
 {
     return m_ptr != other.m_ptr;
 }
 
 template <typename T>
-bool SharedPtr< T> ::operator==(const SharedPtr& other) const
+bool SharedPtr<T> ::operator==(const SharedPtr& other) const
 {
     return m_ptr == other.m_ptr;
 }

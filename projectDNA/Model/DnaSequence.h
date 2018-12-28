@@ -7,33 +7,33 @@
 
 #include "IDNA.h"
 
-class DNA : public IDNA
+class DnaSequence : public IDNA
 {
 public:
-    explicit DNA(const char* seq);
-    explicit DNA(const std::string& seq);
-    DNA(DNA& other);
+    explicit DnaSequence(const char* seq);
+    explicit DnaSequence(const std::string& seq);
+    DnaSequence(DnaSequence &other);
 //    Nucleotide* get_m_seq();
 
     Nucleotide& operator [] (size_t indx);
     const Nucleotide& operator [] (size_t indx) const;
-    IDNA* get_slice(size_t beg, size_t end);
+//    SharedPtr<IDNA> get_slice(size_t beg, size_t end);
     size_t get_length() const;
 
-    IDNA& operator= (const IDNA* other);
-    IDNA& operator= (std::string& other);
-    IDNA& operator= (const char* other);
-    bool operator == (const IDNA* other);
-    bool operator != (const IDNA& other);
+    SharedPtr<IDNA> operator= (const SharedPtr<IDNA> other);
+    SharedPtr<IDNA> operator= (std::string& other);
+    SharedPtr<IDNA> operator= (const char* other);
+    bool operator == (const DnaSequence &other);
+    bool operator != (const DnaSequence &other);
 
-    friend std::ostream& operator<< (std::ostream& os,IDNA* other);
+    friend std::ostream& operator<< (std::ostream& os,SharedPtr<IDNA> other);
 
-    ~DNA();
+    ~DnaSequence();
 
 private:
     Nucleotide* m_seq;
     size_t m_length;
-    DNA(const DNA& other,size_t beg,size_t end);
+    DnaSequence(const DnaSequence &other,size_t beg,size_t end);
 
 };
 

@@ -12,7 +12,7 @@ class SharedPtr
 {
     public:
         explicit SharedPtr(T* ptr = NULL);
-        SharedPtr(SharedPtr const & other);
+        SharedPtr(SharedPtr const &other);
         ~SharedPtr();
 
         SharedPtr<T>& operator = (SharedPtr< T > const& other);
@@ -23,13 +23,12 @@ class SharedPtr
         T& operator*()  const;
         operator bool() const;
 
-
         T* get() const;
 
 
     private:
 
-        T*   m_ptr;
-        size_t * counter;
+        T *m_ptr;
+        size_t *counter;
     };
 #endif //EXCELLENTEAM_ELLA_C_DNA_ORLY_K_SHAREDPTR_H

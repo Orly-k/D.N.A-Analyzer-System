@@ -5,7 +5,7 @@
 #include <cstring>
 #include "DnaSequence.h"
 
-DNA::DNA(const char* seq)
+DnaSequence::DnaSequence(const char* seq)
 {
     size_t size_seq = strlen(seq);
     Nucleotide *arr;
@@ -19,7 +19,7 @@ DNA::DNA(const char* seq)
         throw e;
     }
 
-    for (int i = 0; i < size_seq; i++)
+    for (size_t i = 0; i < size_seq; i++)
     {
         arr[i] = seq[i];
     }
@@ -28,7 +28,7 @@ DNA::DNA(const char* seq)
     m_length = size_seq;
 }
 
-DNA::DNA(const std::string& seq)
+DnaSequence::DnaSequence(const std::string& seq)
 {
     size_t size_seq = seq.length();
     Nucleotide *arr;
@@ -43,7 +43,7 @@ DNA::DNA(const std::string& seq)
         throw e;
     }
 
-    for (int i = 0; i < size_seq; i++)
+    for (size_t i = 0; i < size_seq; i++)
     {
         arr[i] = seq[i];
     }
@@ -52,10 +52,10 @@ DNA::DNA(const std::string& seq)
     m_length = size_seq;
 }
 
-DNA::DNA(DNA& other)
+DnaSequence::DnaSequence(DnaSequence &other)
 {
    size_t size_seq = other.m_length;
-   m_length = other.m_length;
+   m_length = size_seq;
    Nucleotide *arr;
 
    try
@@ -68,7 +68,7 @@ DNA::DNA(DNA& other)
        throw e;
    }
 
-   for (int i = 0; i < size_seq; i++)
+   for (size_t i = 0; i < size_seq; i++)
    {
        arr[i] = other[i];
    }
@@ -82,17 +82,17 @@ DNA::DNA(DNA& other)
 //
 //}
 
-Nucleotide& DNA::operator [] (size_t indx)
+Nucleotide& DnaSequence::operator [] (size_t indx)
 {
     return m_seq[indx];
 }
 
-const Nucleotide& DNA:: operator [] (size_t indx) const
+const Nucleotide& DnaSequence:: operator [] (size_t indx) const
 {
     return m_seq[indx];
 }
 
-DNA::DNA(const DNA& other,size_t beg, size_t end)
+DnaSequence::DnaSequence(const DnaSequence &other,size_t beg, size_t end)
 {
     if (end > other.m_length || beg > end) {
         throw std::out_of_range("get_slice");
@@ -107,18 +107,17 @@ DNA::DNA(const DNA& other,size_t beg, size_t end)
     m_length = size_seq;
 }
 
-IDNA* DNA::get_slice(size_t beg, size_t end)
-{
-//    DNA dna(*this, beg, end);
-//    return ;
-}
+//SharedPtr<IDNA> DnaSequence::get_slice(size_t beg, size_t end)
+//{
+//    return DnaSequence(*this, beg, end);
+//}
 
-size_t DNA::get_length() const
+size_t DnaSequence::get_length() const
 {
     return m_length;
 }
 
-IDNA& DNA::operator= (const IDNA* other)
+SharedPtr<IDNA> DnaSequence::operator= (const SharedPtr<IDNA> other)
         {
             size_t size_seq = other->get_length();
             delete[] m_seq;
@@ -135,13 +134,16 @@ IDNA& DNA::operator= (const IDNA* other)
             {
                 throw e;
             }
-            for (int i = 0; i < m_length; i++)
+            for (size_t i = 0; i < m_length; i++)
             {
-//                arr[i] = other;
+                arr[i] = other;
             }
             m_seq = arr;
+
+            return (SharedPtr<IDNA>)this;
         }
-IDNA& DNA::operator= (std::string& other)
+
+SharedPtr<IDNA> DnaSequence::operator= (std::string& other)
         {
             size_t size_seq = other.length();
             delete[] m_seq;
@@ -156,53 +158,57 @@ IDNA& DNA::operator= (std::string& other)
             {
                 throw e;
             }
-            for (int i = 0; i < size_seq; i++) {
+            for (size_t i = 0; i < size_seq; i++) {
                 m_seq[i] = other[i];
             }
 
-            return *this;
+            return (SharedPtr<IDNA>)this;
         }
 
-IDNA& DNA::operator= (const char* other)
+SharedPtr<IDNA> DnaSequence::operator= (const char* other)
         {
-            int size_seq = strlen(other);
+            size_t size_seq = strlen(other);
             delete[] m_seq;
 
-            m_length = size_seq;
-            m_seq = new Nucleotide[size_seq];
-
-            try {
-                for (int i = 0; i < size_seq; i++) {
-                    m_seq[i] = other[i];
-                }
+            try
+            {
+                m_seq = new Nucleotide[size_seq];
             }
             catch (const char* e)
             {
-                delete [] m_seq;
                 throw e;
             }
-            return *this;
+
+            for (size_t i = 0; i < size_seq; i++) {
+                m_seq[i] = other[i];
+            }
+
+            m_length = size_seq;
+
+            return (SharedPtr<IDNA>)this;
         }
 
-bool DNA::operator == (const IDNA* other)
+bool DnaSequence::operator == (const DnaSequence &other)
 {
-    for (unsigned int i = 0; i < other.m_length; ++i) {
+    for (size_t i = 0; i < other.m_length; ++i) {
         if (!(m_seq[i] == other.m_seq[i]))
             return false;
     }
     return true;
 }
 
-bool DNA::operator != (const IDNA& other)
+bool DnaSequence::operator != (const DnaSequence &other)
 {
-    if (!(m_seq == other.m_seq))
-        return true;
+    for (size_t i = 0; i < other.m_length; ++i) {
+        if (m_seq[i] != other.m_seq[i])
+            return true;
+    }
     return false;
 }
 
-DNA::~DNA()
+DnaSequence::~DnaSequence()
 {
-    std::cout << "DnaSequence Dtor" << endl;
+    std::cout << "DnaSequence Dtor" << std::endl;
     delete[] m_seq;
 }
 

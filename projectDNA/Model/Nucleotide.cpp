@@ -63,3 +63,12 @@ std::ostream & operator << (std::ostream& os, const Nucleotide &Nuc)
     return os;
 }
 
+bool Nucleotide::operator == (const Nucleotide &other)
+{
+    return(m_singleNuc == other.m_singleNuc);
+}
+
+bool Nucleotide::operator != (const Nucleotide &other)
+{
+    return(m_singleNuc != other.m_singleNuc);
+}

@@ -19,10 +19,11 @@ public:
     char getNucleotide(){ return m_singleNuc;}
     bool isValid(char c);
     Nucleotide getPair() const;
-    friend std::ostream & operator << (std::ostream &os, const Nucleotide &c);
 
-    // op ==
-    //op!=
+    bool operator == (const Nucleotide &other);
+    bool operator != (const Nucleotide &other);
+
+    friend std::ostream & operator << (std::ostream &os, const Nucleotide &c);
 
 private:
     char m_singleNuc;
