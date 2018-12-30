@@ -16,14 +16,16 @@ public:
     bool nameExists(std::string name);
     bool idExists(size_t id);
 
-    void addDna(SharedPtr<DnaData>);
+    void addDna(SharedPtr<DnaData> dna);
     void deleteDna(std::string name);
     void deleteDna(size_t id);
 
+
 private:
-    static std::map<std::string, SharedPtr<DnaData> > DnaByName;
-    static std::map<size_t , SharedPtr<DnaData> >DnaById;
+    static std::map<std::string, SharedPtr<DnaData*> > DnaByName;
+    static std::map<size_t , SharedPtr<DnaData*> >DnaById;
 };
+
 
 
 #endif //PROJECTDNA_DNADATA_H

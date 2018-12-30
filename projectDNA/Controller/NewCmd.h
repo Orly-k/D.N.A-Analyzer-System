@@ -10,9 +10,14 @@
 
 class NewCmd : public ICmd
 {
+public:
    SharedPtr<ICmd> create();
-   void help();
+   void help(); //should return a string ??
    void RunCmd(DnaData* data, std::vector<std::string> );
+
+private:
+//    static bool
+
 };
 
 

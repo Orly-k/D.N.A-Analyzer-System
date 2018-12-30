@@ -13,7 +13,9 @@
 
 class DnaData
 {
-
+public:
+    std::string getName(){ return this->m_name;}
+    size_t getId(){ return this->m_id;}
 private:
     size_t m_id;
     std::string m_name;
