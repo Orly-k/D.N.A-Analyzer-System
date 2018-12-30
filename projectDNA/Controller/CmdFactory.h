@@ -8,6 +8,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include "ICmd.h"
 
 using std::string;
 
@@ -15,7 +16,11 @@ class CmdFactory
 {
 
 public:
-    static std::map<string,std::vector<string> > CmdMap;
+    static std::map<string,SharedPtr<ICmd> > CmdMap;
+//    static void registerToFactory(std::string cmd, );
+
+    static SharedPtr<ICmd> get_cmd(std::string cmd);
+
 };
 
 

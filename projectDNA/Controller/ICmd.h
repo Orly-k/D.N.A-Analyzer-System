@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 #include "../Model/SharedPtr.h"
-#include "../Model/DataController.h"
+#include "../Model/DataCollection.h"
 
 class ICmd
 {

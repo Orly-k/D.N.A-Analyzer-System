@@ -19,7 +19,6 @@ private:
     std::string m_name;
     char m_status;
     SharedPtr<IDna*> m_DnaSeq;
-
 };
 
 

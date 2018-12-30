@@ -6,7 +6,7 @@
 #define PROJECTDNA_DNAEXECUTE_H
 
 
-#include "../Model/DataController.h"
+#include "../Model/DataCollection.h"
 #include "../View/Parser.h"
 #include "../View/CLI.h"
 
