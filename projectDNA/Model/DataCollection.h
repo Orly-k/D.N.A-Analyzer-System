@@ -13,6 +13,8 @@
 class DataCollection
 {
 public:
+    DataCollection();
+
     bool nameExists(std::string name);
     bool idExists(size_t id);
 
@@ -20,10 +22,13 @@ public:
     void deleteDna(std::string name);
     void deleteDna(size_t id);
 
+    size_t getInc(){ return inc_number; }
 
 private:
-    static std::map<std::string, SharedPtr<DnaData*> > DnaByName;
-    static std::map<size_t , SharedPtr<DnaData*> >DnaById;
+    static std::map<std::string, SharedPtr<DnaData> > DnaByName;
+    static std::map<size_t , SharedPtr<DnaData> >DnaById;
+
+    size_t inc_number;
 };
 
 

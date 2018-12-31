@@ -4,13 +4,14 @@
 
 #include <string>
 #include "Execute.h"
+#include "CmdFactory.h"
 
 
-void Execute::ex()
+void Execute::run()
 {
-    //while
+//    while
     s = cli.get_input();
     arr = p.parsing(s);
-
-    //call cmd in factory
+    SharedPtr<ICmd> cmd = CmdFactory::getCmd(arr[0]);
+    cmd->RunCmd(data, arr);
 }

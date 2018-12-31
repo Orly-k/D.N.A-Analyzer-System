@@ -6,7 +6,7 @@
 #include "NewCmd.h"
 
 
-SharedPtr<ICmd> CmdFactory::get_cmd(std::string cmd)
+SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
 {
     if (cmd == "new")
     {

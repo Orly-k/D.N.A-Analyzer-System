@@ -11,7 +11,7 @@ int main()
 //    test_nuc();
 //    test_Dna();
     CLI c;
-    c.run();
+    c.get_input();
 
     return 0;
 }

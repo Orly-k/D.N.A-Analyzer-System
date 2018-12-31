@@ -15,7 +15,7 @@ class ICmd
 public:
      virtual SharedPtr<ICmd> create() = 0;
      virtual void help() = 0;
-     virtual void RunCmd(DnaData* data, std::vector<std::string> ) = 0;
+     virtual void RunCmd(SharedPtr<DataCollection> dataCollection, std::vector<char*> ) = 0;
 };
 
 

@@ -5,7 +5,6 @@
 #ifndef PROJECTDNA_DNAEXECUTE_H
 #define PROJECTDNA_DNAEXECUTE_H
 
-
 #include "../Model/DataCollection.h"
 #include "../View/Parser.h"
 #include "../View/CLI.h"
@@ -13,17 +12,14 @@
 class Execute
 {
 public:
-//    SharedPtr<CLICmd> getCliToRun(string cmd):
-//    void runCmd(SharedPtr<CLICmd>>, vector);
-
-    void ex();
+    void run();
 
 private:
-//    DnaData* data;
+    SharedPtr<DnaData> data;
     CLI cli;
-    std::string s;
+    char* s;
     Parser p;
-    std::vector<std::string> arr;
+    std::vector<char*> arr;
 
 };
 

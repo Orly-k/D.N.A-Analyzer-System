@@ -5,15 +5,12 @@
 #ifndef PROJECTDNA_CLI_H
 #define PROJECTDNA_CLI_H
 
-
 #include "../Controller/Execute.h"
-//#include "Parser.h"
 
 class CLI
 {
-
 public:
-    std::string get_input();
+    char* get_input();
 };
 
 

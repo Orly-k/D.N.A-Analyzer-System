@@ -4,9 +4,14 @@
 
 #include "DataCollection.h"
 
+DataCollection::DataCollection()
+{
+    incNumber = 0;
+}
+
 bool DataCollection::nameExists(std::string name)
 {
-    std::map<std::string, SharedPtr<DnaData*> >::iterator itr;
+    std::map<std::string, SharedPtr<DnaData> >::iterator itr;
 
     for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
     {
@@ -18,7 +23,7 @@ bool DataCollection::nameExists(std::string name)
 
 bool DataCollection::idExists(size_t id)
 {
-    std::map<size_t, SharedPtr<DnaData*> >::iterator itr;
+    std::map<size_t, SharedPtr<DnaData> >::iterator itr;
 
     for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
     {
@@ -30,6 +35,8 @@ bool DataCollection::idExists(size_t id)
 
 void DataCollection::addDna(SharedPtr<DnaData> dna)
 {
+    incNumber++;
+
     DnaByName.insert(std::pair<std::string, SharedPtr<DnaData> >(dna->getName(), dna) );
     DnaById.insert(std::pair<size_t , SharedPtr<DnaData> >(dna->getId(), dna) );
 }
@@ -37,7 +44,10 @@ void DataCollection::addDna(SharedPtr<DnaData> dna)
 void DataCollection::deleteDna(std::string name)
 {
     size_t dna_id;
-    std::map<size_t, SharedPtr<DnaData*> >::iterator itr;
+
+    std::map<size_t, SharedPtr<DnaData> >::iterator itr;
+
+//    itr = DnaByName.find(name);
 
     for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
     {
@@ -52,7 +62,7 @@ void DataCollection::deleteDna(std::string name)
 void DataCollection::deleteDna(size_t id)
 {
     std::string name;
-    std::map<std::string, SharedPtr<DnaData*> >::iterator itr;
+    std::map<std::string, SharedPtr<DnaData> >::iterator itr;
 
     for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
     {

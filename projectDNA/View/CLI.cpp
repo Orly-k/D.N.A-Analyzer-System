@@ -7,9 +7,9 @@
 #include <iostream>
 #include "CLI.h"
 
-std::string CLI::get_input()
+char* CLI::get_input()
 {
-  std::string input;
+  char* input;
   std::cout<<"please enter your cmd and details: "<<std::endl;
   std::cin>>input;
 

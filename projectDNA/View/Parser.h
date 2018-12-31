@@ -5,14 +5,13 @@
 #ifndef PROJECTDNA_DNAPARSER_H
 #define PROJECTDNA_DNAPARSER_H
 
-
 #include <string>
 #include <vector>
 
 class Parser
 {
 public:
-    std::vector<std::string> parsing(std::string);
+    std::vector<char*> parsing(char* str);
 };
 
 
