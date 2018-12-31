@@ -4,14 +4,13 @@
 //#include "Tests/Nucleotide_tests.cpp"
 //#include "Tests/DnaSequence_tests.cpp"
 #include "Model/DnaSequence.h"
-#include "View/CLI.h"
+//#include "View/CLI.h"
 
 int main()
 {
 //    test_nuc();
 //    test_Dna();
-    CLI c;
-    c.get_input();
+
 
     return 0;
 }

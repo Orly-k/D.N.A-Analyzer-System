@@ -25,8 +25,8 @@ public:
     size_t getInc(){ return inc_number; }
 
 private:
-    static std::map<std::string, SharedPtr<DnaData> > DnaByName;
-    static std::map<size_t , SharedPtr<DnaData> >DnaById;
+    std::map<std::string, SharedPtr<DnaData> > DnaByName;
+    std::map<size_t , SharedPtr<DnaData> >DnaById;
 
     size_t inc_number;
 };

@@ -5,7 +5,7 @@
 #ifndef PROJECTDNA_CLI_H
 #define PROJECTDNA_CLI_H
 
-#include "../Controller/Execute.h"
+//#include "../Controller/Execute.h"
 
 class CLI
 {

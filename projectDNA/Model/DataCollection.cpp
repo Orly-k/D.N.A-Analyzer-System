@@ -6,7 +6,7 @@
 
 DataCollection::DataCollection()
 {
-    incNumber = 0;
+    inc_number = 0;
 }
 
 bool DataCollection::nameExists(std::string name)
@@ -35,7 +35,7 @@ bool DataCollection::idExists(size_t id)
 
 void DataCollection::addDna(SharedPtr<DnaData> dna)
 {
-    incNumber++;
+    inc_number++;
 
     DnaByName.insert(std::pair<std::string, SharedPtr<DnaData> >(dna->getName(), dna) );
     DnaById.insert(std::pair<size_t , SharedPtr<DnaData> >(dna->getId(), dna) );
@@ -51,12 +51,12 @@ void DataCollection::deleteDna(std::string name)
 
     for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
     {
-        if (itr->second == DnaByName(name))
+//        if (itr->second == DnaByName(name))
             dna_id = itr->first;
     }
 
     DnaByName.erase(name);
-    DnaById.erase(dna_id);
+//    DnaById.erase(dna_id);
 }
 
 void DataCollection::deleteDna(size_t id)
@@ -66,7 +66,7 @@ void DataCollection::deleteDna(size_t id)
 
     for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
     {
-        if (itr->second == DnaById(id))
+//        if (itr->second == DnaById(id))
             name = itr->first;
     }
 

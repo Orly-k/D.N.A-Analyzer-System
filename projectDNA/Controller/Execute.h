@@ -15,7 +15,7 @@ public:
     void run();
 
 private:
-    SharedPtr<DnaData> data;
+    SharedPtr<DataCollection> data;
     CLI cli;
     char* s;
     Parser p;
