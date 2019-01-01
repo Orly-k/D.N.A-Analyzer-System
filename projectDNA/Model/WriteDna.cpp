@@ -7,7 +7,7 @@
 
 using std::ofstream;
 
-WriteDna::WriteDna(const char *FileName) :m_fileName(FileName){}
+WriteDna::WriteDna(std::string FileName) :m_fileName(FileName){}
 
 
 //WriteDna::WriteDna(WriteDna const & other) : m_fileName(other.m_fileName)

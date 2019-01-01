@@ -22,13 +22,13 @@ public:
 //    void deleteDna(std::string name);
 //    void deleteDna(size_t id);
 
-    size_t getInc(){ return this->inc_number; }
+    size_t getInc(){ return inc_number; }
 
 private:
     std::map<std::string, SharedPtr<DnaData> > DnaByName;
     std::map<size_t , SharedPtr<DnaData> >DnaById;
 
-    size_t inc_number;
+    size_t inc_number; //static
 };
 
 

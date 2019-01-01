@@ -6,12 +6,13 @@
 #define PROJECTDNA_WRITETOFILE_H
 
 
+#include <sstream>
 #include "DnaSequence.h"
 
 class WriteDna
 {
 public:
-    WriteDna(const char *FileName);
+    WriteDna(std::string FileName);
     //WriteDna(WriteFile const & other); ?
     //    ~WriteFile();
     void write(DnaSequence dna);

@@ -21,8 +21,9 @@ void NewCmd::RunCmd(SharedPtr<DataCollection> data, std::vector<std::string> arr
     size_t vec_size = arr.size();
     bool inValidName = true;
 
-    size_t id =5; // data->getInc();
-    std::stringstream name;
+    size_t id = 5; // data->getInc();
+//    std::stringstream name;
+    std::string name;
 
     if (vec_size < 2)
         return;
@@ -31,11 +32,15 @@ void NewCmd::RunCmd(SharedPtr<DataCollection> data, std::vector<std::string> arr
         inValidName = data->nameExists(arr[2]);
 
     if(inValidName)
-        name<<"seq"<<id;
+    {
+        std::ostringstream oss;
+        oss << id;
+        name = "seq_" + oss.str();
+    }
     else
-        name<<arr[2];
+        name = arr[2];
 
-    DnaData newDna(id, name.str(), SharedPtr<IDna> (new DnaSequence (arr[1])));
+    DnaData newDna(id, name, SharedPtr<IDna> (new DnaSequence (arr[1])));
     std::cout<<"inserted to collection - id: "<<newDna.getId()<<" name: "<<newDna.getName()<<std::endl;
 }
 

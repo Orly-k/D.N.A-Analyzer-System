@@ -6,9 +6,15 @@
 #define PROJECTDNA_PRINTCMD_H
 
 
-class PrintCmd
-{
+//#include <tgmath.h>
+#include "ICmd.h"
 
+class PrintCmd : public ICmd
+{
+public:
+    SharedPtr<ICmd> create();
+    void help(); //should return a string ??
+    void RunCmd(SharedPtr<DataCollection> dataCollection, std::vector<std::string> arr);
 };
 
 
