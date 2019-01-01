@@ -13,7 +13,7 @@ class NewCmd : public ICmd
 public:
    SharedPtr<ICmd> create();
    void help(); //should return a string ??
-   void RunCmd(SharedPtr<DataCollection> dataCollection, std::vector<char*> arr);
+   void RunCmd(SharedPtr<DataCollection> dataCollection, std::vector<std::string> arr);
 
 private:
 //    static bool

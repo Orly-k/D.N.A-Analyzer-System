@@ -6,9 +6,17 @@
 #define PROJECTDNA_READDNA_H
 
 
+#include "DnaSequence.h"
+
 class ReadDna
 {
-
+public:
+    ReadDna(const char *FileName);
+//    ReadDna(ReadDna const &other);
+//    ~ReadDna();
+    DnaSequence read();
+private:
+    std::string m_fileData;
 };
 
 

@@ -12,18 +12,12 @@ class WriteDna
 {
 public:
     WriteDna(const char *FileName);
-    void write(const DnaSequence);
+    //WriteDna(WriteFile const & other); ?
+    //    ~WriteFile();
+    void write(DnaSequence dna);
 
 private:
-    const char* FileName;
-//    std::
-//    - m_outfile: ofstream
-
+    std::string m_fileName;
 };
-
-//    WriteFile(WriteFile const & other);
-//    ~WriteFile();
-
-
-
 #endif //PROJECTDNA_WRITETOFILE_H
+

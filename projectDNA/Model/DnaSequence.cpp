@@ -109,7 +109,7 @@ DnaSequence::DnaSequence(const DnaSequence &other,size_t beg, size_t end)
 
 DnaSequence::~DnaSequence()
 {
-    std::cout << "DnaSequence Dtor" << std::endl;
+//    std::cout << "DnaSequence Dtor" << std::endl;
     delete[] m_seq;
 }
 

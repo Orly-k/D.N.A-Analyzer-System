@@ -22,7 +22,7 @@ public:
 //    virtual bool operator == (const IDna &other) = 0;
 //    virtual bool operator != (const IDna &other) = 0;
 
-    virtual ~IDna(){std::cout<<"IDna dtor"<<std::endl;}
+    virtual ~IDna(){} //std::cout<<"IDna dtor"<<std::endl;}
 
 //    friend std::ostream& operator<< (std::ostream& os, SharedPtr<IDna> other);
 };

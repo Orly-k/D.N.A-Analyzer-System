@@ -3,3 +3,27 @@
 //
 
 #include "WriteDna.h"
+#include <fstream>
+
+using std::ofstream;
+
+WriteDna::WriteDna(const char *FileName) :m_fileName(FileName){}
+
+
+//WriteDna::WriteDna(WriteDna const & other) : m_fileName(other.m_fileName)
+//{}
+//
+//WriteDna::~WriteDna()
+//{}
+
+void WriteDna::write(DnaSequence dna)
+{
+    ofstream myfile;
+    myfile.open(m_fileName.c_str());
+
+    if (!myfile.is_open())
+        throw std::logic_error("unable to open file");
+
+    myfile << dna;
+    myfile.close();
+}

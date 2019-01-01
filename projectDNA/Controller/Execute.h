@@ -17,9 +17,9 @@ public:
 private:
     SharedPtr<DataCollection> data;
     CLI cli;
-    char* s;
+    std::string s;
     Parser p;
-    std::vector<char*> arr;
+    std::vector<std::string> arr;
 
 };
 

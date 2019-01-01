@@ -10,7 +10,7 @@
 class CLI
 {
 public:
-    char* get_input();
+    std::string get_input();
 };
 
 

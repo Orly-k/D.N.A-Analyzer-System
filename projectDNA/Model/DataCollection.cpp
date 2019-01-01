@@ -41,36 +41,36 @@ void DataCollection::addDna(SharedPtr<DnaData> dna)
     DnaById.insert(std::pair<size_t , SharedPtr<DnaData> >(dna->getId(), dna) );
 }
 
-void DataCollection::deleteDna(std::string name)
-{
-    size_t dna_id;
-
-    std::map<size_t, SharedPtr<DnaData> >::iterator itr;
-
-//    itr = DnaByName.find(name);
-
-    for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
-    {
-//        if (itr->second == DnaByName(name))
-            dna_id = itr->first;
-    }
-
-    DnaByName.erase(name);
-//    DnaById.erase(dna_id);
-}
-
-void DataCollection::deleteDna(size_t id)
-{
-    std::string name;
-    std::map<std::string, SharedPtr<DnaData> >::iterator itr;
-
-    for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
-    {
-//        if (itr->second == DnaById(id))
-            name = itr->first;
-    }
-
-    DnaById.erase(id);
-    DnaByName.erase(name);
-
-}
+//void DataCollection::deleteDna(std::string name)
+//{
+//    size_t dna_id;
+//
+//    std::map<size_t, SharedPtr<DnaData> >::iterator itr;
+//
+////    itr = DnaByName.find(name);
+//
+//    for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
+//    {
+////        if (itr->second == DnaByName(name))
+//            dna_id = itr->first;
+//    }
+//
+//    DnaByName.erase(name);
+////    DnaById.erase(dna_id);
+//}
+//
+//void DataCollection::deleteDna(size_t id)
+//{
+//    std::string name;
+//    std::map<std::string, SharedPtr<DnaData> >::iterator itr;
+//
+//    for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
+//    {
+////        if (itr->second == DnaById(id))
+//            name = itr->first;
+//    }
+//
+//    DnaById.erase(id);
+//    DnaByName.erase(name);
+//
+//}

@@ -7,11 +7,15 @@
 #include <iostream>
 #include "CLI.h"
 
-char* CLI::get_input()
-{
-  char* input;
-  std::cout<<"please enter your cmd and details: "<<std::endl;
-  std::cin>>input;
+using std::cin;
+using std::cout;
+using std::string;
 
+string CLI::get_input()
+{
+  string input;
+  cout<<"please enter your cmd and details: "<<std::endl;
+  std::getline(cin, input);
   return input;
 }
+

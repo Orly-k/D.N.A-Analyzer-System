@@ -11,7 +11,7 @@
 class Parser
 {
 public:
-    std::vector<char*> parsing(char* str);
+    std::vector<std::string> parsing(std::string str);
 };
 
 

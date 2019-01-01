@@ -16,12 +16,12 @@ void NewCmd::help()
     std::cout<<"new cmd bla bla bla"<<std::endl;
 }
 
-void NewCmd::RunCmd(SharedPtr<DataCollection> data, std::vector<char*> arr)
+void NewCmd::RunCmd(SharedPtr<DataCollection> data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
     bool inValidName = true;
 
-    size_t id = data->getInc();
+    size_t id =5; // data->getInc();
     std::stringstream name;
 
     if (vec_size < 2)
@@ -36,5 +36,6 @@ void NewCmd::RunCmd(SharedPtr<DataCollection> data, std::vector<char*> arr)
         name<<arr[2];
 
     DnaData newDna(id, name.str(), SharedPtr<IDna> (new DnaSequence (arr[1])));
+    std::cout<<"inserted to collection - id: "<<newDna.getId()<<" name: "<<newDna.getName()<<std::endl;
 }
 
