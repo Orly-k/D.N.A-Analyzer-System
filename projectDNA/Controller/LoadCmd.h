@@ -6,8 +6,14 @@
 #define PROJECTDNA_LOADCMD_H
 
 
-class LoadCmd
+#include "ICmd.h"
+
+class LoadCmd: public ICmd
 {
+public:
+    SharedPtr<ICmd> create();
+    void help(); //should return a string ??
+    void RunCmd(SharedPtr<DataCollection> &dataCollection, std::vector<std::string> arr);
 
 };
 

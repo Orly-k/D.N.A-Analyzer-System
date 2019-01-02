@@ -7,9 +7,9 @@
 #include <fstream>
 using std::ifstream;
 
-ReadDna::ReadDna(const char *FileName)
+ReadDna::ReadDna(const std::string FileName)
 {
-    std::ifstream myfile(FileName);
+    std::ifstream myfile(FileName.c_str());
     if (!myfile.is_open())
         throw std::logic_error("unable to open file");
 

@@ -6,12 +6,19 @@
 #include "Execute.h"
 #include "CmdFactory.h"
 
+Execute::Execute()
+{
+    data = SharedPtr<DataCollection>(new DataCollection());
+}
 
 void Execute::run()
 {
-//    while
-    s = cli.get_input();
-    arr = p.parsing(s);
-    SharedPtr<ICmd> cmd = CmdFactory::getCmd(arr[0]);
-    cmd->RunCmd(data, arr);
+    int i = 2;
+    while(i--)
+    {
+        s = cli.get_input();
+        arr = p.parsing(s);
+        SharedPtr<ICmd> cmd = CmdFactory::getCmd(arr[0]);
+        cmd->RunCmd(data, arr);
+    }
 }

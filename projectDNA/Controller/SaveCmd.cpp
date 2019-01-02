@@ -10,7 +10,7 @@
 SharedPtr<ICmd> SaveCmd::create(){}
 void SaveCmd::help(){}//should return a string ??
 
-void SaveCmd::RunCmd(SharedPtr<DataCollection> data, std::vector<std::string> arr)
+void SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
     bool inValidName = true;

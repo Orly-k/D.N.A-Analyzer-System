@@ -13,29 +13,36 @@ bool DataCollection::nameExists(std::string name)
 {
     std::map<std::string, SharedPtr<DnaData> >::iterator itr;
 
-    for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
-    {
-        if (itr->first != name)
-            return true;
-    }
+//    itr = DnaByName.find(name);
+
+//    for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
+//    {
+//        if (itr->first != name)
+//            return true;
+//    }
+//
+//    if (itr != DnaByName.end())
+//        return true;
+//    return false;
+    std::cout<<DnaByName.count(name);
     return false;
+//    return DnaByName.count(name) ? true:false;
 }
 
-bool DataCollection::idExists(size_t id)
-{
-    std::map<size_t, SharedPtr<DnaData> >::iterator itr;
-
-    for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
-    {
-        if (itr->first != id)
-            return true;
-    }
-    return false;
-}
+//bool DataCollection::idExists(size_t id)
+//{
+//    std::map<size_t, SharedPtr<DnaData> >::iterator itr;
+//
+//    for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
+//    {
+//        if (itr->first != id)
+//            return true;
+//    }
+//    return false;
+//}
 
 void DataCollection::addDna(SharedPtr<DnaData> dna)
 {
-    inc_number++;
 
     DnaByName.insert(std::pair<std::string, SharedPtr<DnaData> >(dna->getName(), dna) );
     DnaById.insert(std::pair<size_t , SharedPtr<DnaData> >(dna->getId(), dna) );

@@ -5,6 +5,7 @@
 #include "CmdFactory.h"
 #include "NewCmd.h"
 #include "SaveCmd.h"
+#include "LoadCmd.h"
 
 
 SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
@@ -24,4 +25,12 @@ SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
 
         return ptr;
     }
+
+//    if (cmd == "load")
+//    {
+//        LoadCmd *l = new LoadCmd();
+//        SharedPtr<ICmd> ptr(l);
+//
+//        return ptr;
+//    }
 }

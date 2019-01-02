@@ -16,29 +16,36 @@ void NewCmd::help()
     std::cout<<"new cmd bla bla bla"<<std::endl;
 }
 
-void NewCmd::RunCmd(SharedPtr<DataCollection> data, std::vector<std::string> arr)
+void NewCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
     bool inValidName = true;
 
-    size_t id = 5; // data->getInc();
-//    std::stringstream name;
+    size_t id = data->getInc();
+
     std::string name;
+
 
     if (vec_size < 2)
         return;
-
+    std::string item;
     if(vec_size == 3)
-        inValidName = data->nameExists(arr[2]);
+    {
+        std::stringstream ss(arr[2]);
+
+        while(std::getline(ss, item, '@')){}
+
+        inValidName = data->nameExists(item);
+    }
 
     if(inValidName)
     {
         std::ostringstream oss;
         oss << id;
-        name = "seq_" + oss.str();
+        name = "seq" + oss.str();
     }
     else
-        name = arr[2];
+        name = item;
 
     DnaData newDna(id, name, SharedPtr<IDna> (new DnaSequence (arr[1])));
     std::cout<<"inserted to collection - id: "<<newDna.getId()<<" name: "<<newDna.getName()<<std::endl;

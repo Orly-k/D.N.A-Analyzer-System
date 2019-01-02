@@ -16,13 +16,13 @@ public:
     DataCollection();
 
     bool nameExists(std::string name);
-    bool idExists(size_t id);
+//    bool idExists(size_t id);
 
     void addDna(SharedPtr<DnaData> dna);
 //    void deleteDna(std::string name);
 //    void deleteDna(size_t id);
 
-    size_t getInc(){ return inc_number; }
+    size_t getInc(){ return ++inc_number; }
 
 private:
     std::map<std::string, SharedPtr<DnaData> > DnaByName;

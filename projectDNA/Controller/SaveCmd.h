@@ -13,7 +13,7 @@ class SaveCmd: public ICmd
 public:
     SharedPtr<ICmd> create();
     void help(); //should return a string ??
-    void RunCmd(SharedPtr<DataCollection> data, std::vector<std::string> arr);
+    void RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr);
 };
 
 

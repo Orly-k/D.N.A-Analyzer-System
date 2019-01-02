@@ -12,6 +12,7 @@
 class Execute
 {
 public:
+    Execute();
     void run();
 
 private:
