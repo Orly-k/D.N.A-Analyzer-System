@@ -14,7 +14,7 @@ void SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> a
 {
     size_t vec_size = arr.size();
     bool inValidName = true;
-    size_t id = 3; // data->getInc();
+    size_t id = data->getInc();
     std::string name;
 
     if (vec_size < 2)
@@ -25,10 +25,10 @@ void SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> a
     {
         std::ostringstream oss;
         oss<<id;
-        name = "seq" + oss.str();
+        name = "seq" + oss.str() + ".rawdna";
     }
     else
-        name = arr[2];
+        name = arr[2] + ".rawdna";
 
     WriteDna s(name);
 

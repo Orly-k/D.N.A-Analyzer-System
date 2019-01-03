@@ -2,6 +2,7 @@
 // Created by kierszen on 12/29/18.
 //
 
+#include <sstream>
 #include "DataCollection.h"
 
 DataCollection::DataCollection()
@@ -15,16 +16,16 @@ bool DataCollection::nameExists(std::string name)
 
 //    itr = DnaByName.find(name);
 
-//    for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
-//    {
-//        if (itr->first != name)
-//            return true;
-//    }
-//
+    for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
+    {
+        if (itr->first != name)
+            return true;
+    }
+
 //    if (itr != DnaByName.end())
 //        return true;
-//    return false;
-    std::cout<<DnaByName.count(name);
+    return false;
+
     return false;
 //    return DnaByName.count(name) ? true:false;
 }
@@ -81,3 +82,19 @@ void DataCollection::addDna(SharedPtr<DnaData> dna)
 //    DnaByName.erase(name);
 //
 //}
+
+
+std::string DataCollection::generateName(std::string name)
+{
+    if((!nameExists(name)) && (name !="seq"))
+        return name;
+    size_t n = 1;
+    std::stringstream s;
+    s << name << n;
+    while(nameExists(s.str()))
+    {
+        s.str("");
+        s << name << ++n;
+    }
+    return s.str();
+}

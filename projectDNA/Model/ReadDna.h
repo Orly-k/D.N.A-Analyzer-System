@@ -11,7 +11,7 @@
 class ReadDna
 {
 public:
-    ReadDna(const std::string FileName);
+    ReadDna(const std::string &FileName);
 //    ReadDna(ReadDna const &other);
 //    ~ReadDna();
     DnaSequence read();

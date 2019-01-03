@@ -52,30 +52,30 @@ DnaSequence::DnaSequence(const std::string& seq)
     m_length = size_seq;
 }
 
-DnaSequence::DnaSequence(DnaSequence &other)
-{
-   size_t size_seq = other.m_length;
-   m_length = size_seq;
-   Nucleotide *arr;
-
-   try
-   {
-       arr = new Nucleotide[size_seq];
-   }
-
-   catch (const char *e)
-   {
-       throw e;
-   }
-
-   for (size_t i = 0; i < size_seq; i++)
-   {
-       arr[i] = other[i];
-   }
-
-   m_seq = arr;
-   m_length = size_seq;
-}
+//DnaSequence::DnaSequence(DnaSequence &other)
+//{
+//   size_t size_seq = other.m_length;
+//   m_length = size_seq;
+//   Nucleotide *arr;
+//
+//   try
+//   {
+//       arr = new Nucleotide[size_seq];
+//   }
+//
+//   catch (const char *e)
+//   {
+//       throw e;
+//   }
+//
+//   for (size_t i = 0; i < size_seq; i++)
+//   {
+//       arr[i] = other[i];
+//   }
+//
+//   m_seq = arr;
+//   m_length = size_seq;
+//}
 
 Nucleotide* DnaSequence:: get_m_seq()
 {
@@ -131,31 +131,35 @@ size_t DnaSequence::get_length() const
     return m_length;
 }
 
-DnaSequence& DnaSequence::operator= (const IDna& other)
-        {
-            size_t size_seq = other.get_length();
-            delete[] m_seq;
-
-            m_length = size_seq;
-
-            Nucleotide* arr;
-
-            try
-            {
-                arr = new Nucleotide[size_seq];
-            }
-            catch (const char *e)
-            {
-                throw e;
-            }
-            for (size_t i = 0; i < m_length; i++)
-            {
-                arr[i] = other[i];
-            }
-            m_seq = arr;
-
-            return *this;
-        }
+//DnaSequence& DnaSequence::operator= (const DnaSequence& other)
+//        {
+//            size_t size_seq = other.get_length();
+//
+////            if ((this != &other)&&(m_seq!=NULL)) {
+////                delete[] m_seq;
+////            }
+//
+//
+//            m_length = size_seq;
+//
+//            Nucleotide* arr;
+//
+//            try
+//            {
+//                arr = new Nucleotide[size_seq];
+//            }
+//            catch (const char *e)
+//            {
+//                throw e;
+//            }
+//            for (size_t i = 0; i < m_length; i++)
+//            {
+//                arr[i] = other[i];
+//            }
+//            m_seq = arr;
+//
+//            return *this;
+//        }
 
 DnaSequence& DnaSequence::operator= (std::string& other)
         {

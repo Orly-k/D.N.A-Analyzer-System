@@ -21,6 +21,7 @@ public:
     void addDna(SharedPtr<DnaData> dna);
 //    void deleteDna(std::string name);
 //    void deleteDna(size_t id);
+    std::string generateName(std::string name = "seq");
 
     size_t getInc(){ return ++inc_number; }
 

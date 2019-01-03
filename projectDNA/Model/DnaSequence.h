@@ -13,7 +13,8 @@ class DnaSequence : public IDna
 public:
     explicit DnaSequence(const char* seq);
     explicit DnaSequence(const std::string& seq);
-    DnaSequence(DnaSequence &other);
+//    DnaSequence(){}
+//    DnaSequence(DnaSequence &other);
 
     ~DnaSequence();
 
@@ -24,7 +25,7 @@ public:
 
     Nucleotide* get_m_seq();
 
-    DnaSequence& operator= (const IDna& other);
+//    DnaSequence& operator= (const DnaSequence& other);
     DnaSequence& operator= (std::string& other);
     DnaSequence& operator= (const char* other);
 

@@ -173,7 +173,7 @@ public:
     SharedPtr(const SharedPtr<U> &pt);
 
     template<class U>
-    SharedPtr& operator= (const SharedPtr<U>&);
+    SharedPtr& operator= (const SharedPtr<U> &other);
 
     SharedPtr &operator=(const SharedPtr &other);
     SharedPtr<T> &operator=(T* otherPtr);

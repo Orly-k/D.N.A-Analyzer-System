@@ -7,9 +7,12 @@
 #include <fstream>
 using std::ifstream;
 
-ReadDna::ReadDna(const std::string FileName)
+ReadDna::ReadDna(const std::string &FileName)
 {
-    std::ifstream myfile(FileName.c_str());
+    std::ifstream myfile;
+    std::string str = ("/home/kierszen/CLionProjects/excellenteam-ella-c-dna-Orly-k/projectDNA/" + FileName);
+    myfile.open(str.c_str());
+
     if (!myfile.is_open())
         throw std::logic_error("unable to open file");
 

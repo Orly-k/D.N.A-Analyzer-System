@@ -2,49 +2,45 @@
 // Created by kierszen on 12/29/18.
 //
 
+#include <sstream>
 #include "LoadCmd.h"
 #include "../Model/ReadDna.h"
 
 SharedPtr<ICmd> LoadCmd::create(){}
 void LoadCmd::help(){} //should return a string ??
-void LoadCmd::RunCmd(SharedPtr<DataCollection> &dataCollection, std::vector<std::string> arr)
+
+void LoadCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
-//    size_t id = 6; //data->getInc();
+    size_t id = data->getInc();
+    std::string filename = arr[1];
+    std::string name;
 
     if (vec_size < 2)
         return;
 
-    std::string name = arr[1];
-    ReadDna file_dna(name);
+    ReadDna file_dna(filename);
+//    DnaSequence dna;
     DnaSequence dna(file_dna.read());
 
+    if(vec_size == 3)
+    {
+        std::stringstream ss(arr[2]);
+        while(std::getline(ss, name, '@')){}
+        name = data->generateName(name);
 
+    }
+    else
+    {
+        std::size_t pos = filename.find(".rawdna");
+        std::string onlyName = filename.erase (pos);
 
+        name = data->generateName(onlyName);
+    }
 
+    SharedPtr<IDna> pdna(new DnaSequence(dna));
+
+    DnaData newDna(id, name, pdna);
+    std::cout<<"inserted to collection from file! id: "<<newDna.getId()<<" name: "<<newDna.getName()<<std::endl;
 }
 
-//
-//bool inValidName = true;
-
-//std::string item;
-//if(vec_size == 3)
-//{
-//std::stringstream ss(arr[2]);
-//
-//while(std::getline(ss, item, '@')){}
-//
-//inValidName = data->nameExists(item);
-//}
-//
-//if(inValidName)
-//{
-//std::ostringstream oss;
-//oss << id;
-//name = "seq" + oss.str();
-//}
-//else
-//name = item;
-//
-//DnaData newDna(id, name, SharedPtr<IDna> (new DnaSequence (arr[1])));
-//std::cout<<"inserted to collection - id: "<<newDna.getId()<<" name: "<<newDna.getName()<<std::endl;
