@@ -25,7 +25,7 @@ std::string NewCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::str
     std::stringstream to_return;
 
     if (vec_size != 2 && vec_size != 3)
-        return "Command new needs 2 or 3 arguments\n";
+        return "This Command requires 2 or 3 arguments!\n";
 
     if(vec_size == 3)
     {

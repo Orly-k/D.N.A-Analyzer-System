@@ -11,29 +11,29 @@
 
 SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
 {
-//    if (cmd == "new")
+    if (cmd == "new")
     {
         NewCmd *c = new NewCmd();
         SharedPtr<ICmd> ptr(c);
 
         return ptr;
     }
-//
-//    if (cmd == "save")
-//    {
-//        SaveCmd *s = new SaveCmd();
-//        SharedPtr<ICmd> ptr(s);
-//
-//        return ptr;
-//    }
-//
-//    if (cmd == "load")
-//    {
-//        LoadCmd *l = new LoadCmd();
-//        SharedPtr<ICmd> ptr(l);
-//
-//        return ptr;
-//    }
+
+    if (cmd == "save")
+    {
+        SaveCmd *s = new SaveCmd();
+        SharedPtr<ICmd> ptr(s);
+
+        return ptr;
+    }
+
+    if (cmd == "load")
+    {
+        LoadCmd *l = new LoadCmd();
+        SharedPtr<ICmd> ptr(l);
+
+        return ptr;
+    }
 //    if (cmd == "print")
 //    {
 //        PrintCmd *p = new PrintCmd();
@@ -41,12 +41,12 @@ SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
 //
 //        return ptr;
 //    }
-//    else /////just for compilation!!!!
-//    {
-//        LoadCmd *l = new LoadCmd();
-//        SharedPtr<ICmd> ptr(l);
-//
-//        return ptr;
-//    }
+    else /////just for compilation!!!!
+    {
+        LoadCmd *l = new LoadCmd();
+        SharedPtr<ICmd> ptr(l);
+
+        return ptr;
+    }
 
 }
