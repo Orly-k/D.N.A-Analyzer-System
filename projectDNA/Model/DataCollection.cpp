@@ -87,7 +87,7 @@ void DataCollection::addDna(SharedPtr<DnaData> dna)
 std::string DataCollection::generateName(std::string name)
 {
     if (name.empty())
-        name = "seq";
+        name = "seq"; ///extra cus gets by default?
 
     if(!(nameExists(name)) && (name !="seq"))
         return name;

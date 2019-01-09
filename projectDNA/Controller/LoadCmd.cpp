@@ -18,9 +18,12 @@ std::string LoadCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::st
     std::string name;
     std::stringstream to_return;
 
-    if (vec_size < 2)
+    if (vec_size != 2 && vec_size != 3)
         return "This Command requires 2 or 3 arguments!\n";
 
+    std::size_t pos = filename.find(".rawdna");
+    if (pos == std::string::npos)
+        return "invalid file!\n";
 
     ReadDna file_dna(filename);
     DnaSequence dna(file_dna.read());
@@ -36,7 +39,6 @@ std::string LoadCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::st
     }
     else
     {
-        std::size_t pos = filename.find(".rawdna");
         std::string onlyName = filename.erase (pos);
 
         name = data->generateName(onlyName);

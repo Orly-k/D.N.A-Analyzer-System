@@ -34,13 +34,13 @@ SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
 
         return ptr;
     }
-//    if (cmd == "print")
-//    {
-//        PrintCmd *p = new PrintCmd();
-//        SharedPtr<ICmd> ptr(p);
-//
-//        return ptr;
-//    }
+    if (cmd == "print")
+    {
+        PrintCmd *p = new PrintCmd();
+        SharedPtr<ICmd> ptr(p);
+
+        return ptr;
+    }
     else /////just for compilation!!!!
     {
         LoadCmd *l = new LoadCmd();

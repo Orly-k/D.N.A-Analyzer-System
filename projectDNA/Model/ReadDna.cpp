@@ -14,7 +14,7 @@ ReadDna::ReadDna(const std::string &FileName)
     myfile.open(str.c_str());
 
     if (!myfile.is_open())
-        throw std::logic_error("unable to open file");
+        throw std::logic_error("unable to open file"); //leave as exception?
 
     while (!myfile.eof())
     {

@@ -8,36 +8,30 @@
 #include "../Model/WriteDna.h"
 
 //SharedPtr<ICmd> SaveCmd::create(){}
-// change from isvalid t name exists!!!
+
 void SaveCmd::help(){}//should return a string ??
 
 std::string SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
-    bool inValidName = true;
-    size_t id = data->getInc();
-    std::string name;
+//    size_t id = data->getInc();
+    std::stringstream file_name;
 
-    if (vec_size < 2)
-        return "dd";
+    if (vec_size != 2 && vec_size != 3)
+        return "This Command requires 2 or 3 arguments!\n";
 
-    if(vec_size == 3)
-        inValidName = data->nameExists(arr[2]);
+    std::string name = data->generateName("seq");
 
-    if(inValidName)
-    {
-        std::ostringstream oss;
-        oss<<id;
-        name = "seq" + oss.str() + ".rawdna";
-    }
+    if(vec_size == 2)
+        file_name<<name;
     else
-        name = arr[2] + ".rawdna";
+        file_name<<arr[2];
 
-    WriteDna s(name);
+    file_name<<".rawdna";
 
+    WriteDna s(file_name.str());
     DnaSequence dna(arr[1]);
-
     s.write(dna);
 
-    return "dd";
+    return "dd\n";
 }

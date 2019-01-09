@@ -21,11 +21,11 @@ std::string NewCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::str
     size_t vec_size = arr.size();
     size_t id = data->getInc();
     std::string name;
-    std::string item = " ";
+    std::string item = "";
     std::stringstream to_return;
 
     if (vec_size != 2 && vec_size != 3)
-        return "This Command requires 2 or 3 arguments!\n";
+        return "Command new needs 2 or 3 arguments\n";
 
     if(vec_size == 3)
     {

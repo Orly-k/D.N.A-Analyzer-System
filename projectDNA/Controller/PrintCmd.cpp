@@ -18,34 +18,101 @@ void PrintCmd::help()
 std::string PrintCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
-    size_t num_of_chars;
+    size_t num_char;
+    std::string identifier;
+    std::stringstream to_return;
+//    status??
 
-    if (vec_size < 2)
-        return "dd";
+    if (vec_size != 2 && vec_size != 3)
+        return "This Command requires 2 or 3 arguments!\n";
 
-    if(vec_size == 2)
-        num_of_chars = 99;
 
-    else if(vec_size == 3)
+    std::string name = " ";
+    size_t id = 0;
+
+    if (arr[1][0]=='#')
     {
-        std::istringstream iss(arr[2]);
-        iss >> num_of_chars;
+        identifier = "seq_id";
+
+        std::string seq_id;
+        std::stringstream ss(arr[1]);
+        while(std::getline(ss, seq_id, '#')){}
+
+        std::istringstream iss(seq_id);
+        iss >> id;
     }
 
-    std::string seq_id;
-    std::stringstream ss(arr[1]);
-    while(std::getline(ss, seq_id, '#')){}
+    else if (arr[1][0]=='@')
+    {
+        identifier = "seq_name";
 
-    size_t id;
-    std::istringstream isss(seq_id);
-    isss >> id;
+        std::stringstream ss(arr[1]);
+        while(std::getline(ss, name, '@')){}
+    }
+    else
+        return "please enter a valid sequence name or id";
 
-    std::map<size_t, SharedPtr<DnaData> >::iterator itr;
+   ///////////////////////take out to functions !!!!!!!!!!!!!!!!!!!!
 
-    itr = data->DnaById.find(id);
-    std::string name = itr->second->getName();
 
-    std::cout<<"seq_name by id 1 suppose seq1: "<<name<<std::endl;
 
-    return "dd";
+    if(identifier == "seq_id")
+    {
+        std::map<size_t, SharedPtr<DnaData> >::iterator itr;
+        itr = data->DnaById.find(id);
+        SharedPtr<IDna> dna = itr->second->get_pdna();
+
+        name = itr->second->getName();
+        to_return<<"["<<id<<"] "<<name<<std::endl; ///status!!
+
+        size_t seq_size = dna->get_length();
+        if (vec_size == 3)
+        {
+            std::istringstream chars(arr[2]);
+            chars >> num_char;
+        }
+        else if (seq_size >= 99) ///use 99 as defined
+            num_char = 99;
+        else
+            num_char = seq_size;
+
+        for (size_t i = 0; i < num_char; ++i)
+        {
+            to_return<<dna->operator[](i);
+
+            if(i % 98 == 0 && i != 0)
+                to_return<<std::endl;
+        }
+    }
+    else
+    {
+        std::map<std::string, SharedPtr<DnaData> >::iterator itr;
+        itr = data->DnaByName.find(name);
+        SharedPtr<IDna> dna = itr->second->get_pdna();
+
+        id = itr->second->getId();
+        to_return<<"["<<id<<"] "<<name<<std::endl; ///status!!
+
+        size_t seq_size = dna->get_length();
+        if (vec_size == 3)
+        {
+            std::istringstream chars(arr[2]);
+            chars >> num_char;
+        }
+        else if (seq_size >= 99) ///use 99 as defined
+            num_char = 99;
+        else
+            num_char = seq_size;
+
+        for (size_t i = 0; i < num_char; ++i)
+        {
+            to_return<<dna->operator[](i);
+
+            if(i % 98 == 0 && i != 0)
+                to_return<<std::endl;
+        }
+        to_return<<std::endl;
+    }
+
+    return to_return.str();
 }

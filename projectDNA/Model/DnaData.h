@@ -15,6 +15,8 @@ public:
     DnaData(size_t id, SharedPtr<IDna> DnaSeq, std::string name,  char status = 'o');
     std::string getName(){ return this->m_name;}
     size_t getId(){ return this->m_id;}
+    SharedPtr<IDna> get_pdna() {return this->m_DnaSeq;}
+    char get_status(){ return this->m_status;}
 
 //    op== ??
 
