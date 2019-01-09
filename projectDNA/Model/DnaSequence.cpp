@@ -2,7 +2,6 @@
 // Created by kierszen on 12/27/18.
 //
 
-#include <cstring>
 #include "DnaSequence.h"
 
 DnaSequence::DnaSequence(const char* seq)
@@ -113,14 +112,14 @@ DnaSequence::~DnaSequence()
     delete[] m_seq;
 }
 
-std::ostream& operator<< (std::ostream& os,DnaSequence &other)
-{
-    for (size_t i = 0; i < other.m_length ; ++i)
-    {
-        os<<other.m_seq[i];
-    }
-    return os;
-}
+//std::ostream& operator<< (std::ostream& os,DnaSequence &other)
+//{
+//    for (size_t i = 0; i < other.m_length ; ++i)
+//    {
+//        os<<other.m_seq[i];
+//    }
+//    return os;
+//}
 //SharedPtr<IDna> DnaSequence::get_slice(size_t beg, size_t end)
 //{
 //    return DnaSequence(*this, beg, end);

@@ -27,6 +27,14 @@ public:
 //    friend std::ostream& operator<< (std::ostream& os, SharedPtr<IDna> other);
 };
 
+//std::ostringstream& operator<<(std::ostringstream& oss, const SharedPtr<IDna>& dna)
+//{
+//    for (unsigned int i = 0; i < 40; ++i)
+//    {
+//        oss << dna->get_m_seq()[i];
+//    }
+//    return oss;
+//}
 
 
 #endif //PROJECTDNA_IDNA_H

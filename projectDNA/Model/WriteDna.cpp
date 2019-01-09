@@ -24,6 +24,6 @@ void WriteDna::write(DnaSequence dna)
     if (!myfile.is_open())
         throw std::logic_error("unable to open file");
 
-    myfile << dna;
+    myfile << dna.get_m_seq();
     myfile.close();
 }

@@ -7,14 +7,12 @@
 
 
 #include <cstdio>
-#include <string>
-#include "../Model/SharedPtr.h"
 #include "IDna.h"
 
 class DnaData
 {
 public:
-    DnaData(size_t id, std::string name, SharedPtr<IDna> DnaSeq, char status = 'o');
+    DnaData(size_t id, SharedPtr<IDna> DnaSeq, std::string name,  char status = 'o');
     std::string getName(){ return this->m_name;}
     size_t getId(){ return this->m_id;}
 

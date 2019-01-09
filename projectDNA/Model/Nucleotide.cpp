@@ -2,8 +2,6 @@
 // Created by kierszen on 12/25/18.
 //
 
-#include <iostream>
-#include <cstring>
 #include <assert.h>
 #include "Nucleotide.h"
 
@@ -57,7 +55,7 @@ Nucleotide Nucleotide::getPair() const
     return Nucleotide(c);
 }
 
-std::ostream & operator << (std::ostream& os, const Nucleotide &Nuc)
+std::ostream &operator << (std::ostream& os, const Nucleotide &Nuc)
 {
     os << Nuc.m_singleNuc;
     return os;

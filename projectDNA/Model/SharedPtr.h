@@ -219,7 +219,7 @@ template<typename T>
 template<class U>
 inline SharedPtr<T>::SharedPtr(const SharedPtr<U> &pt)
         :m_ptr(pt.m_ptr),
-         m_refCount(pt.refCount)
+         m_refCount(pt.m_refCount)
 {
 //    std::cout<<"in temp cpy-constructor\n";
     (*m_refCount)++;
@@ -309,7 +309,7 @@ inline SharedPtr<T> & SharedPtr<T>::operator= (const SharedPtr<U> &other)
         this->release();
         // Copy the data and reference pointer and increment the reference count
         m_ptr=other.m_ptr;
-        m_refCount = other.refCount;
+        m_refCount = other.m_refCount;
         (*m_refCount)++;
     }
     return *this;

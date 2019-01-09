@@ -6,29 +6,33 @@
 #include "NewCmd.h"
 #include "../Model/DnaSequence.h"
 
-SharedPtr<ICmd> NewCmd::create() //register
-{
-
-}
+//SharedPtr<ICmd> NewCmd::create() //register
+//{
+//
+//}
 
 void NewCmd::help()
 {
     std::cout<<"new cmd bla bla bla"<<std::endl;
 }
 
-void NewCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
+std::string NewCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
     size_t id = data->getInc();
     std::string name;
-    std::string item;
+    std::string item = " ";
+    std::stringstream to_return;
 
-    if (vec_size < 2)
-        return;
+    if (vec_size != 2 && vec_size != 3)
+        return "Command new needs 2 or 3 arguments\n";
 
     if(vec_size == 3)
     {
         std::stringstream ss(arr[2]);
+
+        if (arr[2][0] != '@')
+            return "invalid sequence name!\n";
 
         while(std::getline(ss, item, '@')){}
 
@@ -37,8 +41,10 @@ void NewCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> ar
     else
         name = data->generateName(item);
 
+    SharedPtr<IDna> pdna(new DnaSequence (arr[1]));
+    SharedPtr<DnaData> pnewDna(new DnaData(id,pdna,name));
+    data->addDna(pnewDna);
+    to_return<<"["<<pnewDna->getId()<<"] "<<pnewDna->getName()<<": "<<arr[1]<<std::endl;
 
-    DnaData newDna(id, name, SharedPtr<IDna> (new DnaSequence (arr[1])));
-    std::cout<<"inserted to collection! id: "<<newDna.getId()<<" name: "<<newDna.getName()<<std::endl;
+    return to_return.str();
 }
-

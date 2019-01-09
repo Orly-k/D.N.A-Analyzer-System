@@ -3,14 +3,15 @@
 //
 
 #include <sstream>
-#include <unistd.h>
+//#include <unistd.h>
 #include "SaveCmd.h"
 #include "../Model/WriteDna.h"
 
-SharedPtr<ICmd> SaveCmd::create(){}
+//SharedPtr<ICmd> SaveCmd::create(){}
+// change from isvalid t name exists!!!
 void SaveCmd::help(){}//should return a string ??
 
-void SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
+std::string SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
     bool inValidName = true;
@@ -18,9 +19,11 @@ void SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> a
     std::string name;
 
     if (vec_size < 2)
-        return;
+        return "dd";
+
     if(vec_size == 3)
         inValidName = data->nameExists(arr[2]);
+
     if(inValidName)
     {
         std::ostringstream oss;
@@ -35,4 +38,6 @@ void SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> a
     DnaSequence dna(arr[1]);
 
     s.write(dna);
+
+    return "dd";
 }

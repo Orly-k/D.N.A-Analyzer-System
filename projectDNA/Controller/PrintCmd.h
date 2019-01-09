@@ -12,9 +12,9 @@
 class PrintCmd : public ICmd
 {
 public:
-    SharedPtr<ICmd> create();
+//    SharedPtr<ICmd> create();
     void help(); //should return a string ??
-    void RunCmd(SharedPtr<DataCollection> dataCollection, std::vector<std::string> arr);
+    std::string RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr);
 };
 
 

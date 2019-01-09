@@ -19,3 +19,9 @@ string CLI::get_input()
   return input;
 }
 
+void CLI::print_output(std::string str)
+{
+  cout<<str;
+}
+
+

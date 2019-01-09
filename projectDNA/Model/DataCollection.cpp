@@ -13,21 +13,21 @@ DataCollection::DataCollection()
 bool DataCollection::nameExists(std::string name)
 {
     std::map<std::string, SharedPtr<DnaData> >::iterator itr;
+//
+////    itr = DnaByName.find(name);
+//
+//    for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
+//    {
+//        if (itr->first == name)
+//        std::cout<<itr->first<<std::endl;
+//            return true;
+//    }
+//
+////    if (itr != DnaByName.end())
+////        return true;
+//    return false;
 
-//    itr = DnaByName.find(name);
-
-    for (itr = DnaByName.begin(); itr != DnaByName.end(); ++itr)
-    {
-        if (itr->first != name)
-            return true;
-    }
-
-//    if (itr != DnaByName.end())
-//        return true;
-    return false;
-
-    return false;
-//    return DnaByName.count(name) ? true:false;
+    return DnaByName.count(name) ? true:false;
 }
 
 //bool DataCollection::idExists(size_t id)
@@ -86,8 +86,12 @@ void DataCollection::addDna(SharedPtr<DnaData> dna)
 
 std::string DataCollection::generateName(std::string name)
 {
-    if((!nameExists(name)) && (name !="seq"))
+    if (name.empty())
+        name = "seq";
+
+    if(!(nameExists(name)) && (name !="seq"))
         return name;
+
     size_t n = 1;
     std::stringstream s;
     s << name << n;

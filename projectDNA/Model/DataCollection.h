@@ -6,7 +6,6 @@
 #define PROJECTDNA_DNADATA_H
 
 
-#include <string>
 #include <map>
 #include "DnaData.h"
 
@@ -25,9 +24,11 @@ public:
 
     size_t getInc(){ return ++inc_number; }
 
-private:
-    std::map<std::string, SharedPtr<DnaData> > DnaByName;
+
+    std::map<std::string, SharedPtr<DnaData> > DnaByName; //moved from private!!
     std::map<size_t , SharedPtr<DnaData> >DnaById;
+
+private:
 
     size_t inc_number; //static
 };

@@ -11,6 +11,7 @@ class CLI
 {
 public:
     std::string get_input();
+    void print_output(std::string str);
 };
 
 

@@ -6,8 +6,6 @@
 #define PROJECTDNA_CMDFACTORY_H
 
 #include <map>
-#include <string>
-#include <vector>
 #include "ICmd.h"
 
 using std::string;

@@ -5,6 +5,7 @@
 #ifndef PROJECT_DNA_NUCLEOTIDE_H
 #define PROJECT_DNA_NUCLEOTIDE_H
 
+#include <cstring>
 #include <iostream>
 
 class Nucleotide
@@ -23,7 +24,7 @@ public:
     bool operator == (const Nucleotide &other);
     bool operator != (const Nucleotide &other);
 
-    friend std::ostream & operator << (std::ostream &os, const Nucleotide &c);
+    friend std::ostream &operator << (std::ostream &os, const Nucleotide &c);
 
 private:
     char m_singleNuc;

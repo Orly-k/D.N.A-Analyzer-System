@@ -13,10 +13,10 @@
 class ICmd
 {
 public:
-     virtual SharedPtr<ICmd> create() = 0;
+//     virtual SharedPtr<ICmd> create() = 0;
      virtual void help() = 0;
-     virtual void RunCmd(SharedPtr<DataCollection> &dataCollection, std::vector<std::string> ) = 0;
-//     virtual ~ICmd(){std::cout<<"icmd dtor"<<std::endl;}
+     virtual std::string RunCmd(SharedPtr<DataCollection> &dataCollection, std::vector<std::string> ) = 0;
+     virtual ~ICmd(){}
 };
 
 

@@ -2,7 +2,6 @@
 // Created by kierszen on 12/29/18.
 //
 
-#include <string>
 #include "Execute.h"
 #include "CmdFactory.h"
 
@@ -14,11 +13,13 @@ Execute::Execute()
 void Execute::run()
 {
     int i = 2;
+    std::string func_output;
     while(i--)
     {
         s = cli.get_input();
         arr = p.parsing(s);
         SharedPtr<ICmd> cmd = CmdFactory::getCmd(arr[0]);
-        cmd->RunCmd(data, arr);
+        func_output = cmd->RunCmd(data, arr);
+        cli.print_output(func_output);
     }
 }

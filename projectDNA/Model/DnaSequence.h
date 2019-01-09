@@ -33,7 +33,7 @@ public:
     //    bool operator == (const DnaSequence &other);//?
 //    bool operator != (const DnaSequence &other);//?
 
-    friend std::ostream& operator<< (std::ostream& os,DnaSequence &other);
+//    friend std::ostringstream& operator<< (std::ostringstream& oss,DnaSequence &other);
 
 private:
     Nucleotide* m_seq;

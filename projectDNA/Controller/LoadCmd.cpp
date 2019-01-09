@@ -6,10 +6,10 @@
 #include "LoadCmd.h"
 #include "../Model/ReadDna.h"
 
-SharedPtr<ICmd> LoadCmd::create(){}
+//SharedPtr<ICmd> LoadCmd::create(){}
 void LoadCmd::help(){} //should return a string ??
 
-void LoadCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
+std::string LoadCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
 {
     size_t vec_size = arr.size();
     size_t id = data->getInc();
@@ -17,10 +17,9 @@ void LoadCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> a
     std::string name;
 
     if (vec_size < 2)
-        return;
+        return "dd";
 
     ReadDna file_dna(filename);
-//    DnaSequence dna;
     DnaSequence dna(file_dna.read());
 
     if(vec_size == 3)
@@ -40,7 +39,9 @@ void LoadCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> a
 
     SharedPtr<IDna> pdna(new DnaSequence(dna));
 
-    DnaData newDna(id, name, pdna);
+    DnaData newDna(id, pdna, name);
     std::cout<<"inserted to collection from file! id: "<<newDna.getId()<<" name: "<<newDna.getName()<<std::endl;
+
+    return "dd";
 }
 
