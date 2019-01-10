@@ -16,14 +16,19 @@ WriteDna::WriteDna(std::string FileName) :m_fileName(FileName){}
 //WriteDna::~WriteDna()
 //{}
 
-void WriteDna::write(DnaSequence dna)
+void WriteDna::write(SharedPtr<IDna> dna)
 {
+    size_t seq_size = dna->get_length();
     ofstream myfile;
     myfile.open(m_fileName.c_str());
 
     if (!myfile.is_open())
         throw std::logic_error("unable to open file");
 
-    myfile << dna.get_m_seq();
+    for (size_t i = 0; i < seq_size; ++i)
+    {
+        myfile << dna->operator[](i);
+    }
+
     myfile.close();
 }

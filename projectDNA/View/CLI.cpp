@@ -14,7 +14,7 @@ using std::string;
 string CLI::get_input()
 {
   string input;
-  cout<<"please enter your cmd and details: "<<std::endl;
+  cout<<"> cmd >>> ";
   std::getline(cin, input);
   return input;
 }

@@ -12,7 +12,7 @@ Execute::Execute()
 
 void Execute::run()
 {
-    int i = 2;
+    int i = 3;
     std::string func_output;
     while(i--)
     {

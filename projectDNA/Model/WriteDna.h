@@ -15,7 +15,7 @@ public:
     WriteDna(std::string FileName);
     //WriteDna(WriteFile const & other); ?
     //    ~WriteFile();
-    void write(DnaSequence dna);
+    void write(SharedPtr<IDna> dna);
 
 private:
     std::string m_fileName;
