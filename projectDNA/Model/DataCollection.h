@@ -9,6 +9,8 @@
 #include <map>
 #include "DnaData.h"
 
+
+
 class DataCollection
 {
 public:
@@ -24,15 +26,14 @@ public:
 
     size_t getInc(){ return ++inc_number; }
 
-
     std::map<std::string, SharedPtr<DnaData> > DnaByName; //moved from private!!
     std::map<size_t , SharedPtr<DnaData> >DnaById;
+
 
 private:
 
     size_t inc_number; //static
 };
-
 
 
 #endif //PROJECTDNA_DNADATA_H

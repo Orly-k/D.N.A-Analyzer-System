@@ -7,16 +7,17 @@
 
 
 #include "ICmd.h"
+#include "CmdFactory.h"
 
 class NewCmd : public ICmd
 {
 public:
-//   SharedPtr<ICmd> create();
+//   static SharedPtr<ICmd> create();
    void help(); //should return a string ??
-    std::string RunCmd(SharedPtr<DataCollection> &dataCollection, std::vector<std::string> arr);
+    std::string RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr);
 
 private:
-//    static bool
+//    static bool reg;
 
 };
 

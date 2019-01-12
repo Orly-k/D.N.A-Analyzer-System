@@ -6,8 +6,23 @@
 #include "NewCmd.h"
 #include "SaveCmd.h"
 #include "LoadCmd.h"
-#include "PrintCmd.h"
+#include "ShowCmd.h"
+#include "QuitCmd.h"
 
+//std::map<string,SharedPtr<ICmd> > CmdFactory::CmdMap = CmdMap_init();
+
+//std::map<string,SharedPtr<ICmd> > CmdFactory::CmdMap_init()
+//{
+//    std::map<string,SharedPtr<ICmd> > mymap;
+//    return mymap;
+//}
+//
+//bool CmdFactory::registerToFactory(std::string cmdName, SharedPtr<ICmd>(*create)())
+//{
+//    CmdMap[cmdName] = create();
+//    return true;
+//}
+//
 
 SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
 {
@@ -34,9 +49,16 @@ SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
 
         return ptr;
     }
-    if (cmd == "print")
+    if (cmd == "show")
     {
-        PrintCmd *p = new PrintCmd();
+        ShowCmd *p = new ShowCmd();
+        SharedPtr<ICmd> ptr(p);
+
+        return ptr;
+    }
+    if (cmd == "quit")
+    {
+        QuitCmd *p = new QuitCmd();
         SharedPtr<ICmd> ptr(p);
 
         return ptr;

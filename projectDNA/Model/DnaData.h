@@ -7,6 +7,7 @@
 
 
 #include <cstdio>
+#include <map>
 #include "IDna.h"
 
 class DnaData
@@ -17,6 +18,10 @@ public:
     size_t getId(){ return this->m_id;}
     SharedPtr<IDna> get_pdna() {return this->m_DnaSeq;}
     char get_status(){ return this->m_status;}
+    void set_status(char c){ this->m_status = c;}
+
+    static std::map<char, std::string > status_map;
+    static std::map<char, std::string> st_map_init();
 
 //    op== ??
 

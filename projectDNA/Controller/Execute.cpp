@@ -12,14 +12,18 @@ Execute::Execute()
 
 void Execute::run()
 {
-    int i = 3;
+    int i = 0;
     std::string func_output;
-    while(i--)
+    while(i != -1)
     {
         s = cli.get_input();
         arr = p.parsing(s);
         SharedPtr<ICmd> cmd = CmdFactory::getCmd(arr[0]);
         func_output = cmd->RunCmd(data, arr);
-        cli.print_output(func_output);
+
+        if(func_output != "quit")
+            cli.print_output(func_output);
+        else
+            i = -1;
     }
 }

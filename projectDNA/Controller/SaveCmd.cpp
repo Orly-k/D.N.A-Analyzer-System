@@ -3,7 +3,6 @@
 //
 
 #include <sstream>
-//#include <unistd.h>
 #include "SaveCmd.h"
 #include "../Model/WriteDna.h"
 
@@ -53,6 +52,7 @@ std::string SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::st
         itr = data->DnaById.find(id);
         dna = itr->second->get_pdna();
         name = itr->second->getName();
+        itr->second->set_status('-');
     }
     else
     {
@@ -60,6 +60,7 @@ std::string SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::st
         itr = data->DnaByName.find(name);
         dna = itr->second->get_pdna();
         id = itr->second->getId();
+        itr->second->set_status('-');
     }
 
 
@@ -71,6 +72,7 @@ std::string SaveCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::st
 
     WriteDna s(file_name.str());
     s.write(dna);
+
 
     return to_return.str();
 }

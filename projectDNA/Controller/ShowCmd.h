@@ -9,7 +9,7 @@
 //#include <tgmath.h>
 #include "ICmd.h"
 
-class PrintCmd : public ICmd
+class ShowCmd : public ICmd
 {
 public:
 //    SharedPtr<ICmd> create();

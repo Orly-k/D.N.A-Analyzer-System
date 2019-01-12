@@ -14,11 +14,12 @@ class CmdFactory
 {
 
 public:
-    static std::map<string,SharedPtr<ICmd> > CmdMap;
-//    static void registerToFactory(std::string cmd, );
-
+//    static bool registerToFactory(std::string cmdName, SharedPtr<ICmd>(*create)());
     static SharedPtr<ICmd> getCmd(string cmd);
 
+private:
+//    static std::map<string,SharedPtr<ICmd> > CmdMap;
+//    static std::map<string,SharedPtr<ICmd> > CmdMap_init();
 };
 
 
