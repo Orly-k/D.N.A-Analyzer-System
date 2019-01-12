@@ -102,3 +102,16 @@ std::string DataCollection::generateName(std::string name)
     }
     return s.str();
 }
+
+std::string DataCollection::getAllDataDescription()
+{
+    std::map<size_t , SharedPtr<DnaData> >::iterator itr;
+    std::stringstream str;
+
+    for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
+    {
+        str << itr->second->get_status()<<" ";
+        str << itr->second->getDescription() << std::endl;
+    }
+    return str.str();
+}

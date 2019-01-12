@@ -29,6 +29,7 @@ public:
     std::map<std::string, SharedPtr<DnaData> > DnaByName; //moved from private!!
     std::map<size_t , SharedPtr<DnaData> >DnaById;
 
+    std::string getAllDataDescription();
 
 private:
 

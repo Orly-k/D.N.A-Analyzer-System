@@ -6,8 +6,18 @@
 #define PROJECTDNA_LISTCMD_H
 
 
-class ListCmd
+#include "ICmd.h"
+
+class ListCmd : public ICmd
 {
+public:
+//   static SharedPtr<ICmd> create();
+    void help(); //should return a string ??
+    std::string RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr);
+
+private:
+//    static bool reg;
+
 
 };
 

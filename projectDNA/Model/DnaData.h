@@ -23,6 +23,9 @@ public:
     static std::map<char, std::string > status_map;
     static std::map<char, std::string> st_map_init();
 
+    std::string getDescription() const;
+
+
 //    op== ??
 
 private:

@@ -8,6 +8,7 @@
 #include "LoadCmd.h"
 #include "ShowCmd.h"
 #include "QuitCmd.h"
+#include "ListCmd.h"
 
 //std::map<string,SharedPtr<ICmd> > CmdFactory::CmdMap = CmdMap_init();
 
@@ -59,6 +60,13 @@ SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
     if (cmd == "quit")
     {
         QuitCmd *p = new QuitCmd();
+        SharedPtr<ICmd> ptr(p);
+
+        return ptr;
+    }
+    if (cmd == "list")
+    {
+        ListCmd *p = new ListCmd();
         SharedPtr<ICmd> ptr(p);
 
         return ptr;
