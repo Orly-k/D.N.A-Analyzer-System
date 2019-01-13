@@ -14,5 +14,14 @@ std::string QuitCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::st
     std::string str = data->getAllDataStatus();
     if (str == "updated")
         return "quit";
-    else return str;
+    else std::cout<<str<<"Please confirm by 'y' or 'Y', or cancel by 'n' or 'N'."<<std::endl;
+    std::cout<<"> confirm >>> ";
+    std::getline(std::cin, str);
+
+    if(str == "Y" || str == "y")
+        return "quit";
+    else if (str == "N" || str =="n")
+        return "";
+    else
+        return "You have typed an invalid response. Please either confirm by 'y'/'Y', or cancel by 'n'/'N'";
 }

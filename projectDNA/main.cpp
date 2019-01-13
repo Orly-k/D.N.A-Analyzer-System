@@ -10,6 +10,7 @@ int main()
 
     Execute execute;
     execute.run();
-
+//TODO: take care of validation and exceptions.
+//TODO: clean code and use funcs!
     return 0;
 }

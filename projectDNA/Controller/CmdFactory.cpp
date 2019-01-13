@@ -27,5 +27,5 @@ CmdFactory::CmdFactory(){}
 
 SharedPtr<ICmd> CmdFactory::getCmd(std::string cmd)
 {
-    return CmdMap[cmd];
+    return CmdMap[cmd]; //TODO what if dosnt exist?
 }

@@ -21,10 +21,12 @@ void Execute::run()
         SharedPtr<ICmd> cmd = CmdFactory::getInstance()->getCmd(arr[0]);
         func_output = cmd->RunCmd(data, arr);
 
-
         if(func_output != "quit")
             cli.print_output(func_output);
         else
+        {
             i = -1;
+            cli.print_output("Thank you for using Dnalanyzer.\nGoodbye!\n");
+        }
     }
 }
