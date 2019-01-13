@@ -5,8 +5,10 @@
 #include <sstream>
 #include "LoadCmd.h"
 #include "../Model/ReadDna.h"
+#include "CmdFactory.h"
 
-//SharedPtr<ICmd> LoadCmd::create(){}
+bool LoadCmd::reg = CmdFactory::getInstance()->registerToFactory("load", SharedPtr<ICmd> (new LoadCmd));
+
 void LoadCmd::help(){} //should return a string ??
 
 

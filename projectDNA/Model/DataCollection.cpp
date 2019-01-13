@@ -115,3 +115,30 @@ std::string DataCollection::getAllDataDescription()
     }
     return str.str();
 }
+
+std::string DataCollection::getAllDataStatus()
+{
+    std::map<size_t , SharedPtr<DnaData> >::iterator itr;
+    size_t new_counter = 0;
+    size_t modified_counter = 0;
+    std::stringstream str;
+
+    for (itr = DnaById.begin(); itr != DnaById.end(); ++itr)
+    {
+        if (itr->second->get_status() == 'o')
+            new_counter++;
+
+        if (itr->second->get_status() == '*')
+            modified_counter++;
+    }
+    if (new_counter != 0 && modified_counter != 0)
+        str<<"There are "<<modified_counter<<" modified and "<<new_counter<<" new sequences. Are you sure you want to quit?"<<std::endl;
+    else if (new_counter != 0)
+        str<<"There are "<<new_counter<<" new sequences. Are you sure you want to quit?"<<std::endl;
+    else if (modified_counter != 0)
+        str<<"There are "<<modified_counter<<" modified sequences. Are you sure you want to quit?"<<std::endl;
+    else
+        str<<"updated";
+
+    return str.str();
+}

@@ -5,8 +5,9 @@
 #include <sstream>
 #include "SaveCmd.h"
 #include "../Model/WriteDna.h"
+#include "CmdFactory.h"
 
-//SharedPtr<ICmd> SaveCmd::create(){}
+bool SaveCmd::reg = CmdFactory::getInstance()->registerToFactory("save", SharedPtr<ICmd> (new SaveCmd));
 
 void SaveCmd::help(){}//should return a string ??
 

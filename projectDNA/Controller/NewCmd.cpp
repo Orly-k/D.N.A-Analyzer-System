@@ -6,13 +6,7 @@
 #include "NewCmd.h"
 #include "../Model/DnaSequence.h"
 
-//SharedPtr<ICmd> NewCmd::create()
-//{
-//    return SharedPtr<ICmd> (new NewCmd);
-//}
-
-//bool NewCmd::reg = CmdFactory::registerToFactory("new", create);
-
+bool NewCmd::reg = CmdFactory::getInstance()->registerToFactory("new", SharedPtr<ICmd> (new NewCmd));
 
 void NewCmd::help()
 {
@@ -24,7 +18,7 @@ std::string NewCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::str
     size_t vec_size = arr.size();
     size_t id = data->getInc();
     std::string name;
-    std::string item = " ";
+    std::string item = "";
     std::stringstream to_return;
 
     if (vec_size != 2 && vec_size != 3)

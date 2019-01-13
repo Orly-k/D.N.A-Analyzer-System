@@ -31,6 +31,8 @@ public:
 
     std::string getAllDataDescription();
 
+    std::string getAllDataStatus();
+
 private:
 
     size_t inc_number; //static

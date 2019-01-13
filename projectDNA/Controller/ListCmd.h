@@ -16,7 +16,7 @@ public:
     std::string RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr);
 
 private:
-//    static bool reg;
+    static bool reg;
 
 
 };

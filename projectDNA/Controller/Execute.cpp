@@ -18,8 +18,9 @@ void Execute::run()
     {
         s = cli.get_input();
         arr = p.parsing(s);
-        SharedPtr<ICmd> cmd = CmdFactory::getCmd(arr[0]);
+        SharedPtr<ICmd> cmd = CmdFactory::getInstance()->getCmd(arr[0]);
         func_output = cmd->RunCmd(data, arr);
+
 
         if(func_output != "quit")
             cli.print_output(func_output);

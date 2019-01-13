@@ -4,15 +4,13 @@
 
 #include <sstream>
 #include "ShowCmd.h"
+#include "CmdFactory.h"
 
-//SharedPtr<ICmd> ShowCmd::create() //register
-//{
-//
-//}
+bool ShowCmd::reg = CmdFactory::getInstance()->registerToFactory("show", SharedPtr<ICmd> (new ShowCmd));
 
 void ShowCmd::help()
 {
-    std::cout<<"print cmd bla bla bla"<<std::endl;
+    std::cout<<"print"<<std::endl;
 }
 
 std::string ShowCmd::RunCmd(SharedPtr<DataCollection> &data, std::vector<std::string> arr)
